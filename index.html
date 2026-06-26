@@ -1,0 +1,262 @@
+<!-- Save Path: index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>VyperVic Trading Engine</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="stylesheet" href="static/css/style.css"/>
+</head>
+<body>
+<div id="shell">
+    <header id="header">
+        <div class="logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+                <polyline points="16 7 22 7 22 13"/>
+            </svg>
+        </div>
+        <div class="logo-text">
+            <div class="logo-name">Vyper<span>Vic</span></div>
+            <div class="logo-sub">Trading Engine</div>
+        </div>
+        <div class="hdr-pill" id="hdr-pill">● Live</div>
+        <button class="hdr-analyse" id="hdr-analyse">
+            <i class="fas fa-chart-bar"></i>
+        </button>
+    </header>
+
+    <div class="sub-header" id="sub-header">
+        <button class="back-btn" id="global-back-btn"><i class="fas fa-arrow-left"></i></button>
+        <div class="sub-title" id="sub-title">Page</div>
+    </div>
+
+    <div id="content">
+        <!-- ALL PAGES ARE DEFINED IN SEPARATE BLOCKS HERE -->
+        
+        <!-- HOME PAGE -->
+        <div class="page on" id="page-home">
+            <div class="pg-inner">
+                <div class="topbar">
+                    <div><h1>Dashboard</h1><p>Active Portfolio</p></div>
+                    <div class="avatar" id="avatar-btn">V</div>
+                </div>
+                <div class="hero">
+                    <div class="hero-greeting">
+                        <span>Hi <strong id="trader-name-display">Trader</strong>, welcome back.</span>
+                        <button class="edit-name-btn" id="edit-name-btn"><i class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="hero-bal-row">
+                        <div class="hero-bal" id="hero-balance">$0.00</div>
+                        <button class="bal-add-btn" id="open-bal-modal"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="hero-boxes">
+                        <div class="hero-box"><p>Daily Profit</p><h3 id="daily-profit">$0.00</h3></div>
+                        <div class="hero-box"><p>Win Rate</p><h3 id="win-rate">0%</h3></div>
+                    </div>
+                </div>
+                <div class="sect-hdr"><h3>Statistics</h3><span>Overview</span></div>
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-icon ic-green"><i class="fas fa-chart-line"></i></div><p>Total Profit</p><h2 id="home-profit">$0.00</h2></div>
+                    <div class="stat-card"><div class="stat-icon ic-blue"><i class="fas fa-wallet"></i></div><p>Total Trades</p><h2 id="home-trades">0</h2></div>
+                    <div class="stat-card"><div class="stat-icon ic-amber"><i class="fas fa-bolt"></i></div><p>Open Trades</p><h2 id="home-open">0</h2></div>
+                    <div class="stat-card"><div class="stat-icon ic-red"><i class="fas fa-scale-balanced"></i></div><p>Win / Loss</p><h2 id="home-wl">0 / 0</h2></div>
+                </div>
+                <div class="sect-hdr"><h3>Quick Access</h3><span>Modules</span></div>
+                <div class="quick-grid">
+                    <div class="quick-card" data-nav="markets"><div class="mini-icon ic-blue"><i class="fas fa-chart-simple"></i></div><h4>Trading</h4></div>
+                    <div class="quick-card" data-nav="ai"><div class="mini-icon ic-green"><i class="fas fa-robot"></i></div><h4>AI Mode</h4></div>
+                    <div class="quick-card" data-nav="stats"><div class="mini-icon ic-amber"><i class="fas fa-chart-pie"></i></div><h4>Analytics</h4></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MARKETS PAGE -->
+        <div class="page" id="page-markets">
+            <div class="paper-bar">
+                <div class="open-badge" id="open-badge-display">0 open</div>
+                <div class="paper-spacer"></div>
+                <div class="bal-pill">
+                    <span id="paper-balance-display">$0.00</span>
+                    <button id="edit-paper-bal"><i class="fas fa-pen"></i></button>
+                </div>
+            </div>
+            <div class="chart-wrap">
+                <iframe id="tv-market" src="" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+            </div>
+            <div class="bs-bar">
+                <button class="btn-buy" id="market-buy-btn"><i class="fas fa-arrow-up"></i> BUY</button>
+                <button class="btn-sell" id="market-sell-btn"><i class="fas fa-arrow-down"></i> SELL</button>
+            </div>
+        </div>
+
+        <!-- AI MODE PAGE -->
+        <div class="page" id="page-ai">
+            <div class="ai-toolbar">
+                <div class="ai-info">
+                    <strong>AI Environment</strong>
+                    <small id="ai-status">Normal Mode · No active prompt</small>
+                </div>
+                <button class="analyse-btn-sm" id="ai-analyse-trigger">
+                    <i class="fas fa-brain"></i> Analyse
+                </button>
+            </div>
+            <div class="ai-chart-wrap">
+                <iframe id="tv-ai" src="" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </div>
+
+        <!-- TRADE PANEL PAGE -->
+        <div class="page trade-panel-page" id="page-trade-panel">
+            <div class="tp-hdr">
+                <h2 id="tp-title">Place Buy Trade</h2>
+                <div class="live-badge" id="tp-price-display">0.00</div>
+            </div>
+            <div class="tp-inner">
+                <div>
+                    <div class="form-label">Pair</div>
+                    <div class="pair-row">
+                        <div class="pair-name-tp" id="tp-pair-display">XAUUSD</div>
+                        <button class="change-btn" id="tp-change-pair">CHANGE</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-label">Direction</div>
+                    <div class="dir-row">
+                        <button class="btn-dir buy-act" id="tp-dir-buy">▲ BUY</button>
+                        <button class="btn-dir off" id="tp-dir-sell">▼ SELL</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-label">Lot Size</div>
+                    <div class="lot-row">
+                        <button class="lot-btn" id="lot-minus">−</button>
+                        <input class="lot-input" id="lot-input" type="number" value="0.01" step="0.01" min="0.01"/>
+                        <button class="lot-btn" id="lot-plus">+</button>
+                    </div>
+                    <div class="presets-row">
+                        <button class="preset-btn" data-val="0.01">0.01</button>
+                        <button class="preset-btn" data-val="0.05">0.05</button>
+                        <button class="preset-btn" data-val="0.10">0.10</button>
+                        <button class="preset-btn" data-val="0.50">0.50</button>
+                        <button class="preset-btn" data-val="1.00">1.00</button>
+                    </div>
+                </div>
+                <div class="sltp-row">
+                    <div><div class="form-label">Stop Loss</div><input class="form-input" type="number" placeholder="Optional" id="tp-sl"/></div>
+                    <div><div class="form-label">Take Profit</div><input class="form-input" type="number" placeholder="Optional" id="tp-tp"/></div>
+                </div>
+                <button class="execute-btn buy" id="tp-execute-btn">EXECUTE BUY</button>
+            </div>
+        </div>
+
+        <!-- SETTINGS PAGE -->
+        <div class="page" id="page-settings">
+            <div class="pg-inner">
+                <div class="settings-title">Settings</div>
+                <div class="theme-toggle-row">
+                    <div class="s-icon ic-blue"><i class="fas fa-circle-half-stroke"></i></div>
+                    <div class="theme-toggle-info"><h4>App Theme</h4><p id="theme-label">Light Mode</p></div>
+                    <div class="seg-ctrl">
+                        <button class="seg-btn on" id="seg-light">☀️ Light</button>
+                        <button class="seg-btn" id="seg-dark">🌙 Dark</button>
+                    </div>
+                </div>
+                <div class="settings-list">
+                    <div class="settings-item" data-sub="ai-mode-switch" data-title="AI Mode Switch">
+                        <div class="s-icon ic-blue"><i class="fas fa-robot"></i></div>
+                        <div class="s-info"><h4>AI Mode Switch</h4><p>Toggle and configure trading modes</p></div>
+                        <div class="s-arrow">›</div>
+                    </div>
+                    <div class="settings-item" data-sub="api-config" data-title="AI Model Configuration">
+                        <div class="s-icon ic-green"><i class="fas fa-gear"></i></div>
+                        <div class="s-info"><h4>AI Model Configuration</h4><p>Select model and API key</p></div>
+                        <div class="s-arrow">›</div>
+                    </div>
+                    <div class="settings-item" data-sub="telegram-config" data-title="Telegram Configuration">
+                        <div class="s-icon" style="background:var(--blue-bg)"><i class="fab fa-telegram" style="color:var(--accent)"></i></div>
+                        <div class="s-info"><h4>Telegram Configuration</h4><p>Bot token and chat ID setup</p></div>
+                        <div class="s-arrow">›</div>
+                    </div>
+                    <div class="settings-item" data-sub="threshold" data-title="Confidence Threshold">
+                        <div class="s-icon ic-amber"><i class="fas fa-crosshairs"></i></div>
+                        <div class="s-info"><h4>Confidence Threshold</h4><p>Set minimum signal confidence</p></div>
+                        <div class="s-arrow">›</div>
+                    </div>
+                    <div class="settings-item" data-sub="pair-config" data-title="Pair Configuration">
+                        <div class="s-icon" style="background:var(--green-bg)"><i class="fas fa-arrows-rotate" style="color:var(--green)"></i></div>
+                        <div class="s-info"><h4>Pair Configuration</h4><p>Choose trading pairs and providers</p></div>
+                        <div class="s-arrow">›</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAIR PICKER (Overlay Style Page) -->
+        <div class="page" id="page-pair-picker">
+            <div class="picker-bar">
+                <input class="picker-input" type="text" placeholder="Search symbol (e.g. BTCUSD)..." id="picker-search-input"/>
+            </div>
+            <div id="picker-results"></div>
+        </div>
+
+        <!-- DYNAMIC SUB-PAGES (AI Mode Switch, API, etc.) -->
+        <div class="page sub-page" id="page-ai-mode-switch">
+            <div class="sub-inner">
+                <div class="master-bot-row">
+                    <div class="mbi"><h4>MASTER BOT</h4><p>Enable / disable trading engine</p></div>
+                    <label class="toggle"><input type="checkbox" id="master-toggle"><div class="tog-sl"></div></label>
+                </div>
+                <div class="form-block">
+                    <div class="fb-title">Trading Mode</div>
+                    <div class="mode-row">
+                        <button class="mode-btn on" id="mode-normal-btn">Normal Mode</button>
+                        <button class="mode-btn off" id="mode-strategy-btn">Strategy Based</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Other subpages follow similar structure... -->
+
+    </div>
+
+    <!-- BOTTOM NAV -->
+    <nav id="bottom-nav">
+        <button class="nav-item on" data-nav="home" id="nav-home"><i class="fas fa-house"></i><span>Home</span></button>
+        <button class="nav-item" data-nav="markets" id="nav-markets"><i class="fas fa-chart-line"></i><span>Markets</span></button>
+        <button class="nav-item" data-nav="ai" id="nav-ai"><i class="fas fa-robot"></i><span>AI Mode</span></button>
+        <button class="nav-item" data-nav="stats" id="nav-stats"><i class="fas fa-chart-bar"></i><span>Stats</span></button>
+        <button class="nav-item" data-nav="settings" id="nav-settings"><i class="fas fa-gear"></i><span>Settings</span></button>
+    </nav>
+
+    <!-- OVERLAYS & MODALS -->
+    <div class="overlay-panel" id="trades-panel">
+        <div class="panel-sheet">
+            <div class="panel-handle"></div>
+            <div class="panel-hdr">
+                <h3>Open Trades</h3>
+                <div class="panel-floating" id="panel-floating-pnl">$0.00</div>
+                <button class="panel-close-all" id="close-all-trades-btn">CLOSE ALL</button>
+            </div>
+            <div class="panel-body" id="trades-list-container"></div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="generic-modal">
+        <div class="modal-box" id="modal-content"></div>
+    </div>
+
+    <div id="toast"></div>
+</div>
+
+<!-- EXTERNAL SCRIPTS -->
+<script src="static/js/pairs.js"></script>
+<script src="static/js/state.js"></script>
+<script src="static/js/ui.js"></script>
+<script src="static/js/trading.js"></script>
+<script src="static/js/app.js"></script>
+</body>
+</html>
