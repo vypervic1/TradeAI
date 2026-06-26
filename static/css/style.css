@@ -1,81 +1,139 @@
 /* Save Path: static/css/style.css */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-:root{
-  --bg:#E2E8F0;--surface:#FFFFFF;--surface2:#F8FAFC;
-  --border:#E2E8F0;--border2:#CBD5E1;
-  --t1:#0F172A;--t2:#475569;--t3:#94A3B8;
-  --accent:#1A6BFF;--accent-lt:#EFF6FF;--accent-dk:#1458D6;
-  --green:#15803D;--green-bg:#DCFCE7;--green-dk:#166534;
-  --red:#B91C1C;--red-bg:#FEE2E2;
-  --amber:#B45309;--amber-bg:#FEF3C7;
-  --blue-bg:#DBEAFE;
-  --hero1:#1e3a8a;--hero2:#2563eb;
-  --nav-h:76px;
-  --r-xl:22px;--r-lg:16px;--r-md:12px;--r-sm:10px;
-  --sh:0 4px 20px rgba(0,0,0,.07);--sh-lg:0 12px 40px rgba(0,0,0,.12);
+
+:root {
+  --bg:#E2E8F0; --surface:#FFFFFF; --surface2:#F8FAFC;
+  --border:#E2E8F0; --border2:#CBD5E1;
+  --t1:#0F172A; --t2:#475569; --t3:#94A3B8;
+  --accent:#1A6BFF; --accent-lt:#EFF6FF;
+  --green:#15803D; --green-bg:#DCFCE7;
+  --red:#B91C1C; --red-bg:#FEE2E2;
+  --hero1:#1e3a8a; --hero2:#2563eb;
+  --nav-h:76px; --r-xl:22px; --r-lg:16px;
 }
-body.dark{
-  --bg:#0D0D0D;--surface:#161616;--surface2:#1E1E1E;
-  --border:#2A2A2A;--border2:#333;
-  --t1:#F1F5F9;--t2:#94A3B8;--t3:#475569;
-  --accent:#3D8BFF;--accent-lt:rgba(61,139,255,.13);--accent-dk:#1A6BFF;
-  --green:#22C55E;--green-bg:rgba(34,197,94,.12);--green-dk:#4ADE80;
-  --red:#EF4444;--red-bg:rgba(239,68,68,.12);
-  --amber:#F59E0B;--amber-bg:rgba(245,158,11,.12);
-  --blue-bg:rgba(219,234,254,.1);
-  --hero1:#1e3a8a;--hero2:#1d4ed8;
-  --sh:0 4px 20px rgba(0,0,0,.25);--sh-lg:0 12px 40px rgba(0,0,0,.4);
+
+body.dark {
+  --bg:#0D0D0D; --surface:#161616; --surface2:#1E1E1E;
+  --border:#2A2A2A; --t1:#F1F5F9; --t2:#94A3B8; --t3:#475569;
+  --accent-lt:rgba(61,139,255,.13); --green-bg:rgba(34,197,94,.12);
 }
-html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;background:#CBD5E1;color:var(--t1)}
-#shell{display:flex;flex-direction:column;height:100%;width:100%;max-width:430px;margin:0 auto;background:var(--bg);position:relative;box-shadow:0 0 60px rgba(0,0,0,.25);overflow:hidden}
 
-/* Layout Parts */
-#header{flex-shrink:0;height:68px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:12px;z-index:50}
-.logo-mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#3D8BFF);display:flex;align-items:center;justify-content:center}
-.logo-mark svg{width:22px;height:22px}
-.logo-text{flex:1}.logo-name{font-size:20px;font-weight:800;color:var(--t1)}.logo-name span{color:var(--accent)}
-.logo-sub{font-size:9px;font-weight:600;color:var(--t3);letter-spacing:.18em;text-transform:uppercase}
-.hdr-pill{padding:5px 12px;border-radius:100px;font-size:12px;font-weight:700;background:var(--green-bg);color:var(--green);white-space:nowrap}
-.hdr-analyse{width:38px;height:38px;border-radius:10px;border:none;background:var(--accent-lt);color:var(--accent);font-size:16px;display:none;align-items:center;justify-content:center}
-.hdr-analyse.show{display:flex}
+html, body { 
+    height: 100%; 
+    width: 100%; 
+    overflow: hidden; 
+    font-family: 'DM Sans', sans-serif; 
+    background: #CBD5E1; 
+}
 
-.sub-header{display:none;height:56px;background:var(--surface);border-bottom:1px solid var(--border);align-items:center;padding:0 12px;gap:12px}
-.sub-header.on{display:flex}
-.back-btn{width:40px;height:40px;border-radius:10px;border:none;background:var(--accent-lt);color:var(--accent);display:flex;align-items:center;justify-content:center}
+#shell {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden; /* This keeps the trades panel from leaking */
+}
 
-#content{flex:1;overflow:hidden;position:relative}
-.page{position:absolute;inset:0;overflow-y:auto;display:none;background:var(--bg)}
-.page.on{display:block}
-.pg-inner{padding:20px}
+#header {
+    height: 68px;
+    background: var(--surface);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+}
 
-/* Nav */
-#bottom-nav{height:var(--nav-h);background:var(--surface);border-top-left-radius:28px;border-top-right-radius:28px;display:flex;padding:10px 4px 0}
-.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;border:none;background:none;color:var(--t3)}
-.nav-item.on{color:var(--accent);background:var(--accent-lt);border-radius:14px}
-.nav-item i{font-size:21px}
+#content {
+    flex: 1;
+    position: relative;
+    overflow: hidden; /* Critical for inner pages */
+}
 
-/* Components from VyperVic-2 */
-.hero{background:linear-gradient(135deg,var(--hero1) 0%,var(--hero2) 100%);border-radius:28px;padding:24px;color:#fff;margin-bottom:26px}
-.hero-bal{font-size:36px;font-weight:800}
-.stat-card{background:var(--surface);border-radius:var(--r-xl);padding:16px;box-shadow:var(--sh);margin-bottom:12px}
-.stat-icon{width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
-.ic-green{background:var(--green-bg);color:var(--green)}.ic-blue{background:var(--blue-bg);color:var(--accent)}
+.page {
+    position: absolute;
+    inset: 0;
+    overflow-y: auto;
+    display: none;
+    background: var(--bg);
+}
 
-/* Markets & Trading */
-.chart-wrap{flex:1;background:#000;position:relative}
-.chart-wrap iframe{width:100%;height:100%;border:none}
-.bs-bar{height:54px;background:var(--surface);display:flex;gap:10px;padding:7px 12px;border-top:1px solid var(--border)}
-.btn-buy{background:var(--accent);color:#fff;flex:1;border-radius:10px;border:none;font-weight:800}
-.btn-sell{background:var(--red);color:#fff;flex:1;border-radius:10px;border:none;font-weight:800}
+.page.on { display: flex; flex-direction: column; }
 
-/* Toasts */
-#toast{position:fixed;bottom:88px;left:50%;transform:translateX(-50%);background:var(--t1);color:#fff;padding:10px 20px;border-radius:30px;font-size:12px;opacity:0;transition:all .25s;z-index:999}
+/* FIXING THE CHART AREA */
+.chart-wrap {
+    flex: 1;
+    width: 100%;
+    background: #000;
+    position: relative;
+}
+.chart-wrap iframe {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    border: none;
+}
 
-/* Subpages */
-.form-block{background:var(--surface);border-radius:var(--r-xl);padding:16px;margin-bottom:12px}
-.input-group label{display:block;font-size:10px;font-weight:700;margin-bottom:5px;text-transform:uppercase}
-.input-group input, .input-group select, .input-group textarea{width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);background:var(--surface2);color:var(--t1)}
+/* FIXING SETTINGS LIST */
+.settings-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--surface);
+    border-radius: var(--r-lg);
+    padding: 16px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
 
-/* Custom Scrollbars */
-.page::-webkit-scrollbar{width:3px}
-.page::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+.s-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* FIXING THE OVERLAY PANEL (The "Open Trades" issue) */
+.overlay-panel {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 1000;
+    display: none;
+    align-items: flex-end;
+}
+
+.overlay-panel.on { display: flex; }
+
+.panel-sheet {
+    width: 100%;
+    max-height: 80%;
+    background: var(--surface);
+    border-radius: 24px 24px 0 0;
+    padding: 20px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+.overlay-panel.on .panel-sheet { transform: translateY(0); }
+
+/* Navigation */
+#bottom-nav {
+    height: var(--nav-h);
+    background: var(--surface);
+    display: flex;
+    border-top: 1px solid var(--border);
+}
+.nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--t3);
+    font-size: 10px;
+    font-weight: 700;
+}
+.nav-item.on { color: var(--accent); }
+.nav-item i { font-size: 20px; margin-bottom: 4px; }
